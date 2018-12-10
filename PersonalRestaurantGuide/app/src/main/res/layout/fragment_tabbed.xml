@@ -1,0 +1,254 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TabHost
+        android:id="@+id/tabHost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></TabWidget>
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/tab1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#fffffe"
+                    android:orientation="vertical">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textView001"
+                            android:layout_width="91dp"
+                            android:layout_height="28dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="20dp"
+                            android:text="Name"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="spread_inside" />
+
+                        <TextView
+                            android:id="@+id/textView002"
+                            android:layout_width="91dp"
+                            android:layout_height="28dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Address"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView001" />
+
+                        <TextView
+                            android:id="@+id/textView003"
+                            android:layout_width="91dp"
+                            android:layout_height="28dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Tags"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView002" />
+
+                        <TextView
+                            android:id="@+id/textView004"
+                            android:layout_width="91dp"
+                            android:layout_height="29dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="11dp"
+                            android:layout_marginBottom="304dp"
+                            android:text="Rating"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView003"
+                            app:layout_constraintVertical_bias="0.0" />
+
+                        <TextView
+                            android:id="@+id/txtView_EditName"
+                            android:layout_width="197dp"
+                            android:layout_height="28dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="TextView"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/textView001"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtView_EditAddress"
+                            android:layout_width="197dp"
+                            android:layout_height="28dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="TextView"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/textView002"
+                            app:layout_constraintTop_toBottomOf="@+id/txtView_EditName" />
+
+                        <TextView
+                            android:id="@+id/textView_EditTags"
+                            android:layout_width="197dp"
+                            android:layout_height="28dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="TextView"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/textView003"
+                            app:layout_constraintTop_toBottomOf="@+id/txtView_EditAddress" />
+
+                        <RatingBar
+                            android:id="@+id/edit_RatingBar"
+                            style="@android:style/Widget.DeviceDefault.Light.RatingBar.Indicator"
+                            android:layout_width="180dp"
+                            android:layout_height="35dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:stepSize="0.5"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.395"
+                            app:layout_constraintStart_toEndOf="@+id/textView004"
+                            app:layout_constraintTop_toBottomOf="@+id/textView_EditTags" />
+
+                        <TextView
+                            android:id="@+id/textView29"
+                            android:layout_width="72dp"
+                            android:layout_height="33dp"
+                            android:layout_marginStart="44dp"
+                            android:layout_marginTop="28dp"
+                            android:layout_marginEnd="268dp"
+                            android:text="Details"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView004" />
+
+                        <TextView
+                            android:id="@+id/txtView_EditDetails"
+                            android:layout_width="308dp"
+                            android:layout_height="105dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="72dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="Details"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.466"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/edit_RatingBar" />
+
+                        <Button
+                            android:id="@+id/btn_update"
+                            android:layout_width="168dp"
+                            android:layout_height="49dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="Edit"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtView_EditDetails" />
+
+                        <Button
+                            android:id="@+id/E"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="Delete"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/btn_update"
+                            app:layout_constraintVertical_bias="0.125" />
+
+                    </android.support.constraint.ConstraintLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tab2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#fffffe"
+                    android:orientation="vertical">
+
+                    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:tools="http://schemas.android.com/tools"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp">
+
+                        <com.google.android.gms.maps.MapView
+                            android:id="@+id/mapView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+                    </RelativeLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/tab3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#fffffe"
+                    android:orientation="vertical">
+
+                    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:tools="http://schemas.android.com/tools"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:layout_editor_absoluteX="8dp"
+                        tools:layout_editor_absoluteY="0dp">
+                        <TextView
+                            android:id="@+id/textView3"
+                            android:layout_width="141dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="23dp"
+                            android:layout_marginTop="20dp"
+                            android:text="List of Sponsors"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <ListView
+                            android:id="@+id/conf_sponsors_listview"
+                            android:layout_width="300dp"
+                            android:layout_height="454dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginTop="60dp"
+                            android:layout_marginEnd="30dp"/>
+                    </RelativeLayout>
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
+
+</LinearLayout>
