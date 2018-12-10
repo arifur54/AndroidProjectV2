@@ -6,10 +6,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.quickonference.restaurantguide.conference.Restaurant;
@@ -28,13 +30,14 @@ public class ViewRestaurantDetails extends AppCompatActivity {
 
         restPref = currActivity.getSharedPreferences("restaurants", Context.MODE_PRIVATE);
         Intent getintent = getIntent();
-        String id = getintent.getStringExtra("id");
-        Gson gson = new Gson();
-        String json = restPref.getString(id, "");
-        final Restaurant restaurant = gson.fromJson(json, Restaurant.class);
+        final String id = getintent.getStringExtra("id");
+//        Gson gson = new Gson();
+//        String json = restPref.getString(id, "");
+//        Log.d(json, "kkkk");
+//        final Restaurant restaurant = gson.fromJson(json, Restaurant.class);
         setTitle = findViewById(R.id.textView_toolBar);
 
-        String sData[] = id.split(",");
+        final String sData[] = id.split(",");
         setTitle.setText(sData[0]);
         TextView rest_name = findViewById(R.id.txtView_EditName);
         rest_name.setText(sData[0]);
@@ -50,6 +53,7 @@ public class ViewRestaurantDetails extends AppCompatActivity {
         btnLoc = findViewById(R.id.btnMaps);
         btnEdit = findViewById(R.id.btn_update);
         btnDelete = findViewById(R.id.btn_Delete);
+
         // Send to Update Activity
         btnLoc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +74,8 @@ public class ViewRestaurantDetails extends AppCompatActivity {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Delete Logic Goes here
+                restPref.edit().remove(sData[0]).commit();
+
             }
         });
 
