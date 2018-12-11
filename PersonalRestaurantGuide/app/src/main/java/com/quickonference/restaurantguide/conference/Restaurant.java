@@ -4,19 +4,39 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.*;
 
 public class Restaurant {
     private String name, address, details, tag, rating;
+    private Double lat, lng;
 
-    public Restaurant (String name, String address, String tag, String details, String rating)  {
+    public Restaurant (String name, String address, String tag, String details, String rating, Double lat, Double lng)  {
         this.name = name;
         this.address = address;
         this.tag = tag;
         this.details = details;
         this.rating = rating;
+        this.lat = lat;
+        this.lng = lng;
+
     }
 
+    public Double getLat() {
+        return lat;
+    }
+
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    public Double getLng() {
+        return lng;
+    }
+
+    public void setLng(Double lng) {
+        this.lng = lng;
+    }
 
     public String getName () {return this.name; }
     public String getAddress () {

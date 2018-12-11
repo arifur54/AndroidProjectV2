@@ -58,15 +58,15 @@ public class UpdateRestaurant extends AppCompatActivity {
                 rest_Tags = res_Tags.getText().toString();
                 rest_details = res_details.getText().toString();
                 rest_Ratings = Float.toString(res_rating.getRating());
-                Restaurant restaurant = new Restaurant(rest_Name, rest_Address, rest_Tags, rest_details, rest_Ratings);
-//                restaurant.storeRestaurant(currActivity,);
-//                updatePref = PreferenceManager.getDefaultSharedPreferences(t).edit();
-                updatePref.putString("name",rest_Name);
-                updatePref.putString("address",rest_Address);
-                updatePref.putString("tag",rest_Tags);
-                updatePref.putString("details", rest_details);
-                updatePref.putString("rating", rest_Ratings);
-                updatePref.apply();
+//                Restaurant restaurant = new Restaurant(rest_Name, rest_Address, rest_Tags, rest_details, rest_Ratings);
+////                restaurant.storeRestaurant(currActivity,);
+////                updatePref = PreferenceManager.getDefaultSharedPreferences(t).edit();
+//                updatePref.putString("name",rest_Name);
+//                updatePref.putString("address",rest_Address);
+//                updatePref.putString("tag",rest_Tags);
+//                updatePref.putString("details", rest_details);
+//                updatePref.putString("rating", rest_Ratings);
+//                updatePref.apply();
             }
         });
 

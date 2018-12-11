@@ -76,13 +76,6 @@ public class RestaurantListFragment extends Fragment {
             LV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//                    Bundle args = new Bundle();
-//                    args.putString("con_name", resName.get(position));
-//                    Tabbed tabbed = new Tabbed();
-//                    tabbed.setArguments(args);
-//                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, tabbed).commit();
-
 
                     Toast.makeText(getActivity(), "Clicked Items: " + position + customeList.getItem(position).toString(), Toast.LENGTH_SHORT).show();
 

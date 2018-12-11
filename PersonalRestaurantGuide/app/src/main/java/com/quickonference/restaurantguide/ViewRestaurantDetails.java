@@ -31,13 +31,15 @@ public class ViewRestaurantDetails extends AppCompatActivity {
         restPref = currActivity.getSharedPreferences("restaurants", Context.MODE_PRIVATE);
         Intent getintent = getIntent();
         final String id = getintent.getStringExtra("id");
+        final String sData[] = id.split("\n");
 //        Gson gson = new Gson();
 //        String json = restPref.getString(id, "");
 //        Log.d(json, "kkkk");
 //        final Restaurant restaurant = gson.fromJson(json, Restaurant.class);
+        Gson gson = new Gson();
+        String json = restPref.getString(sData[0], "");
+        final Restaurant myRest = gson.fromJson(json, Restaurant.class);
         setTitle = findViewById(R.id.textView_toolBar);
-
-        final String sData[] = id.split("\n");
         setTitle.setText(sData[0]);
         TextView rest_name = findViewById(R.id.txtView_EditName);
         rest_name.setText(sData[0]);
@@ -60,6 +62,12 @@ public class ViewRestaurantDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent =  new Intent(ViewRestaurantDetails.this,MapsAndNav.class);
+                Gson gson = new Gson();
+                String json = restPref.getString(sData[0], "");
+                Restaurant obj = gson.fromJson(json, Restaurant.class);
+                Log.d("JSON", json);
+                intent.putExtra("lat", obj.getLat());
+                intent.putExtra("lng", obj.getLng());
                 startActivity(intent);
             }
         });

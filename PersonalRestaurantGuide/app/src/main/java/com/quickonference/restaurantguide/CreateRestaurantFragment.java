@@ -35,6 +35,7 @@ public class CreateRestaurantFragment extends Fragment implements GoogleApiClien
     private PlaceAutocompleteAdapter placeAutocompleteAdapter;
     GeoDataClient mGeoDataClient;
     private Place mPlace;
+    private LatLng currentLocationLatLng;
     private static final LatLngBounds LAT_LNG_BOUNDS = new LatLngBounds(
             new LatLng(-40,-168), new LatLng(49,-74)
     );
@@ -74,7 +75,7 @@ public class CreateRestaurantFragment extends Fragment implements GoogleApiClien
                  String restTag = restTag_txt.getText().toString();
                  String restDetails = restDetails_txt.getText().toString();
                  String rating = Float.toString(ratingBar.getRating());
-                Restaurant restaurant = new Restaurant(restName, restAddress, restTag, restDetails, rating);
+                Restaurant restaurant = new Restaurant(restName, restAddress, restTag, restDetails, rating, currentLocationLatLng.latitude, currentLocationLatLng.longitude);
                 Restaurant.storeRestaurant(restaurant,currentActivity);
                 Toast.makeText(currentActivity, restaurant.getName() + " has been created.", Toast.LENGTH_SHORT).show();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new RestaurantListFragment()).commit();
@@ -106,8 +107,7 @@ public class CreateRestaurantFragment extends Fragment implements GoogleApiClien
                 places.release();
             }
             final Place place = places.get(0);
-            Log.d("THISPLACE", "Place details" + place.getAttributions());
-            Log.d("THISPLACE", "Place details" + place.getLatLng());
+            currentLocationLatLng = place.getLatLng();
             mPlace = place;
             places.release();
         }
