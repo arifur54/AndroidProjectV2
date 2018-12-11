@@ -72,15 +72,18 @@ public class CreateRestaurantFragment extends Fragment implements GoogleApiClien
         ratingBar = (RatingBar) view.findViewById(R.id.edit_ratingBar);
         currentActivity = getActivity();
 
-        restName = restName_txt.getText().toString();
-        restAddress = restAddress_txt.getText().toString();
-        restTag = restTag_txt.getText().toString();
-        restDetails = restDetails_txt.getText().toString();
-        rating = Float.toString(ratingBar.getRating());
+
         button.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v) {
+
+                restName = restName_txt.getText().toString();
+                restAddress = restAddress_txt.getText().toString();
+                restTag = restTag_txt.getText().toString();
+                restDetails = restDetails_txt.getText().toString();
+                rating = Float.toString(ratingBar.getRating());
+
                 if (restName.isEmpty() || restAddress.isEmpty() || restTag.isEmpty() || restDetails.isEmpty() || rating.isEmpty()) {
                     Toast.makeText(getActivity(), "Field Cannot be emtpy", Toast.LENGTH_SHORT).show();
                 } else {
