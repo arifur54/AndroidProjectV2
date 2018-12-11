@@ -35,6 +35,13 @@ public class CreateRestaurantFragment extends Fragment implements GoogleApiClien
     private PlaceAutocompleteAdapter placeAutocompleteAdapter;
     GeoDataClient mGeoDataClient;
     private Place mPlace;
+
+    EditText restName_txt, restAddress_txt, restTag_txt, restDetails_txt;
+    RatingBar ratingBar;
+    Activity currentActivity;
+
+    String restName, restAddress, restTag, restDetails, rating;
+
     private static final LatLngBounds LAT_LNG_BOUNDS = new LatLngBounds(
             new LatLng(-40,-168), new LatLng(49,-74)
     );
@@ -58,26 +65,32 @@ public class CreateRestaurantFragment extends Fragment implements GoogleApiClien
 
 
         Button button =  view.findViewById(R.id.create_rest_btn);
-        final EditText restName_txt =  view.findViewById(R.id.edit_rest_name);
-        final EditText restAddress_txt =  view.findViewById(R.id.edit_rest_address);
-        final EditText restTag_txt =  view.findViewById(R.id.edit_rest_tag);
-        final EditText restDetails_txt = view.findViewById(R.id.edit_rest_details);
-        final RatingBar ratingBar = (RatingBar) view.findViewById(R.id.edit_ratingBar);
-        final Activity currentActivity = getActivity();
+        restName_txt =  view.findViewById(R.id.edit_rest_name);
+        restAddress_txt =  view.findViewById(R.id.edit_rest_address);
+        restTag_txt =  view.findViewById(R.id.edit_rest_tag);
+        restDetails_txt = view.findViewById(R.id.edit_rest_details);
+        ratingBar = (RatingBar) view.findViewById(R.id.edit_ratingBar);
+        currentActivity = getActivity();
+
+        restName = restName_txt.getText().toString();
+        restAddress = restAddress_txt.getText().toString();
+        restTag = restTag_txt.getText().toString();
+        restDetails = restDetails_txt.getText().toString();
+        rating = Float.toString(ratingBar.getRating());
         button.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v)
-                {
-                 String restName = restName_txt.getText().toString();
-                 String restAddress = restAddress_txt.getText().toString();
-                 String restTag = restTag_txt.getText().toString();
-                 String restDetails = restDetails_txt.getText().toString();
-                 String rating = Float.toString(ratingBar.getRating());
-                Restaurant restaurant = new Restaurant(restName, restAddress, restTag, restDetails, rating);
-                Restaurant.storeRestaurant(restaurant,currentActivity);
-                Toast.makeText(currentActivity, restaurant.getName() + " has been created.", Toast.LENGTH_SHORT).show();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new RestaurantListFragment()).commit();
+            public void onClick(View v) {
+                if (restName.isEmpty() || restAddress.isEmpty() || restTag.isEmpty() || restDetails.isEmpty() || rating.isEmpty()) {
+                    Toast.makeText(getActivity(), "Field Cannot be emtpy", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    Restaurant restaurant = new Restaurant(restName, restAddress, restTag, restDetails, rating);
+                    Restaurant.storeRestaurant(restaurant, currentActivity);
+                    Toast.makeText(currentActivity, restaurant.getName() + " has been created.", Toast.LENGTH_SHORT).show();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new RestaurantListFragment()).commit();
+
+                }
             }
         });
         return view;
