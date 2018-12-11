@@ -8,7 +8,7 @@
 
 
     <EditText
-        android:id="@+id/create_rest_name"
+        android:id="@+id/edit_rest_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <AutoCompleteTextView
-        android:id="@+id/create_rest_address"
+        android:id="@+id/edit_rest_address"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -33,10 +33,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_rest_name" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_rest_name" />
 
     <EditText
-        android:id="@+id/create_rest_tag"
+        android:id="@+id/edit_rest_tag"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -47,10 +47,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_rest_address" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_rest_address" />
 
     <EditText
-        android:id="@+id/create_rest_details"
+        android:id="@+id/edit_rest_details"
         android:layout_width="0dp"
         android:layout_height="94dp"
         android:layout_marginStart="8dp"
@@ -61,10 +61,10 @@
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_rest_tag" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_rest_tag" />
 
     <RatingBar
-        android:id="@+id/ratingBar"
+        android:id="@+id/edit_ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -73,7 +73,7 @@
         android:numStars="5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_rest_details" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_rest_details" />
 
     <Button
         android:id="@+id/create_rest_btn"
@@ -88,7 +88,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+        app:layout_constraintTop_toBottomOf="@+id/edit_ratingBar"
         app:layout_constraintVertical_bias="0.0"
         android:background="@drawable/rounded_button_primary"
         android:textColor="#ffffff"/>

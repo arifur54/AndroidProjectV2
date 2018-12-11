@@ -17,6 +17,7 @@ public class Restaurant {
         this.rating = rating;
     }
 
+
     public String getName () {return this.name; }
     public String getAddress () {
         return this.address;
@@ -26,6 +27,20 @@ public class Restaurant {
     }
     public String getDetails () {return this.details;}
     public String getRating () {return this.rating; }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setAddress(String address){
+        this.address = address;
+    }
+
+    public void setTag(String tag){this.tag = tag; }
+
+    public void setDetails(String details){this.details = details; }
+
+    public void setRating(String rating){this.rating = rating; }
 
     public static void storeRestaurant (Restaurant con, Activity activity) {
         Gson gson = new Gson();

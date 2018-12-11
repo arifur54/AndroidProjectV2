@@ -54,7 +54,7 @@ public class ViewRestaurantDetails extends AppCompatActivity {
         btnEdit = findViewById(R.id.btn_update);
         btnDelete = findViewById(R.id.btn_Delete);
 
-        // Send to Update Activity
+        // Send to maps Activity
         btnLoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,10 +63,13 @@ public class ViewRestaurantDetails extends AppCompatActivity {
             }
         });
 
+        // send to update Activity
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ViewRestaurantDetails.this,UpdateRestaurant.class);
+                String uData = sData[0] + "," + sData[1]+ "," + sData[2] +","+ sData[3] + "," + sData[4];
+                intent.putExtra("res", uData);
                 startActivity(intent);
             }
         });

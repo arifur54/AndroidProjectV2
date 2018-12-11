@@ -27,11 +27,11 @@ public class CreateRestaurantFragment extends Fragment {
 
 
         Button button =  view.findViewById(R.id.create_rest_btn);
-        final EditText restName_txt =  view.findViewById(R.id.create_rest_name);
-        final EditText restAddress_txt =  view.findViewById(R.id.create_rest_address);
-        final EditText restTag_txt =  view.findViewById(R.id.create_rest_tag);
-        final EditText restDetails_txt = view.findViewById(R.id.create_rest_details);
-        final RatingBar ratingBar = (RatingBar) view.findViewById(R.id.ratingBar);
+        final EditText restName_txt =  view.findViewById(R.id.edit_rest_name);
+        final EditText restAddress_txt =  view.findViewById(R.id.edit_rest_address);
+        final EditText restTag_txt =  view.findViewById(R.id.edit_rest_tag);
+        final EditText restDetails_txt = view.findViewById(R.id.edit_rest_details);
+        final RatingBar ratingBar = (RatingBar) view.findViewById(R.id.edit_ratingBar);
         final Activity currentActivity = getActivity();
         button.setOnClickListener(new View.OnClickListener()
         {
