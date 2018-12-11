@@ -7,14 +7,11 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-<<<<<<< HEAD
 import android.widget.AdapterView;
-=======
-import android.view.ViewGroup;
->>>>>>> d8087448ad81319012a2f3ac2cf60a33208a3d9f
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
@@ -47,7 +44,6 @@ public class CreateRestaurantFragment extends Fragment implements GoogleApiClien
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_create_restaurant, container, false);
         getActivity().setTitle("Add a restaurant");
-<<<<<<< HEAD
          mGeoDataClient = Places.getGeoDataClient(this.getActivity(), null);
         mGoogleApiClient = new GoogleApiClient
                 .Builder(this.getActivity())
@@ -55,9 +51,6 @@ public class CreateRestaurantFragment extends Fragment implements GoogleApiClien
                 .addApi(Places.PLACE_DETECTION_API)
                 .enableAutoManage(this.getActivity(), this)
                 .build();
-=======
-        mGeoDataClient = Places.getGeoDataClient(this.getActivity(), null);
->>>>>>> d8087448ad81319012a2f3ac2cf60a33208a3d9f
         mSearch = (AutoCompleteTextView) view.findViewById(R.id.edit_rest_address);
         placeAutocompleteAdapter = new PlaceAutocompleteAdapter(this.getActivity(), mGeoDataClient, LAT_LNG_BOUNDS, null);
         mSearch.setAdapter(placeAutocompleteAdapter);
