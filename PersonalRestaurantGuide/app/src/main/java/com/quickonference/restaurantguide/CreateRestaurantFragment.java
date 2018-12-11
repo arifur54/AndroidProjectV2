@@ -6,10 +6,10 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
@@ -36,7 +36,7 @@ public class CreateRestaurantFragment extends Fragment implements GoogleApiClien
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_create_restaurant, container, false);
         getActivity().setTitle("Add a restaurant");
-         mGeoDataClient = Places.getGeoDataClient(this.getActivity(), null);
+        mGeoDataClient = Places.getGeoDataClient(this.getActivity(), null);
         mSearch = (AutoCompleteTextView) view.findViewById(R.id.edit_rest_address);
         placeAutocompleteAdapter = new PlaceAutocompleteAdapter(this.getActivity(), mGeoDataClient, LAT_LNG_BOUNDS, null);
         mSearch.setAdapter(placeAutocompleteAdapter);

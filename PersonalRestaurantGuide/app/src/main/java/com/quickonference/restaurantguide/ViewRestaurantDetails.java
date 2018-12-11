@@ -37,7 +37,7 @@ public class ViewRestaurantDetails extends AppCompatActivity {
 //        final Restaurant restaurant = gson.fromJson(json, Restaurant.class);
         setTitle = findViewById(R.id.textView_toolBar);
 
-        final String sData[] = id.split(",");
+        final String sData[] = id.split("\n");
         setTitle.setText(sData[0]);
         TextView rest_name = findViewById(R.id.txtView_EditName);
         rest_name.setText(sData[0]);
@@ -49,6 +49,7 @@ public class ViewRestaurantDetails extends AppCompatActivity {
         rest_details.setText(sData[3]);
         RatingBar ratingBar = findViewById(R.id.edit_RatingBar);
         ratingBar.setRating(Float.valueOf(sData[4]));
+
 
         btnLoc = findViewById(R.id.btnMaps);
         btnEdit = findViewById(R.id.btn_update);
@@ -68,7 +69,7 @@ public class ViewRestaurantDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ViewRestaurantDetails.this,UpdateRestaurant.class);
-                String uData = sData[0] + "," + sData[1]+ "," + sData[2] +","+ sData[3] + "," + sData[4];
+                String uData = sData[0] + "\n" + sData[1]+ "\n" + sData[2] +"\n"+ sData[3] + "\n" + sData[4];
                 intent.putExtra("res", uData);
                 startActivity(intent);
             }
@@ -78,7 +79,6 @@ public class ViewRestaurantDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 restPref.edit().remove(sData[0]).commit();
-
             }
         });
 
