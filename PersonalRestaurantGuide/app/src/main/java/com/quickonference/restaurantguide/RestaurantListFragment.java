@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ public class RestaurantListFragment extends Fragment {
     //TextView textView;
     Activity currentActivity;
     CustomeListView customeList;
+    SearchView srcView;
 
     @Nullable
     @Override
@@ -52,6 +54,10 @@ public class RestaurantListFragment extends Fragment {
         Gson gson = new Gson();
         Map<String, ?> allEntries = confPref.getAll();
         currentActivity = getActivity();
+
+        srcView = view.findViewById(R.id.searchView);
+
+
         if (allEntries.size() <= 0) {
             View tview = inflater.inflate(R.layout.listview_layout, container, false);
             restName = (TextView) tview.findViewById(R.id.txtView_ResName);
@@ -86,6 +92,19 @@ public class RestaurantListFragment extends Fragment {
                 }
             });
         }
+
+        srcView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                customeList.getFilter().filter(newText);
+                return false;
+            }
+        });
         return view;
     }
 

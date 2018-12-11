@@ -90,4 +90,17 @@ public class Restaurant {
         Restaurant conference = gson.fromJson(json, Restaurant.class);
         return conference;
     }
+
+    @Override
+    public String toString() {
+        return "Restaurant{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", details='" + details + '\'' +
+                ", tag='" + tag + '\'' +
+                ", rating='" + rating + '\'' +
+                ", lat=" + lat +
+                ", lng=" + lng +
+                '}';
+    }
 }

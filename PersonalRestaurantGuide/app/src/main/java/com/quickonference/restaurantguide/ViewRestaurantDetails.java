@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.gson.Gson;
 import com.quickonference.restaurantguide.conference.Restaurant;
 
@@ -76,9 +75,11 @@ public class ViewRestaurantDetails extends AppCompatActivity {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Gson gson = new Gson();
+                String json = restPref.getString(sData[0], "");
                 Intent intent = new Intent(ViewRestaurantDetails.this,UpdateRestaurant.class);
-                String uData = sData[0] + "\n" + sData[1]+ "\n" + sData[2] +"\n"+ sData[3] + "\n" + sData[4];
-                intent.putExtra("res", uData);
+                // String uData = sData[0] + "\n" + sData[1]+ "\n" + sData[2] +"\n"+ sData[3] + "\n" + sData[4] + "\n" + sData[5] + "\n" + sData[6];
+                intent.putExtra("json", json);
                 startActivity(intent);
             }
         });
@@ -87,6 +88,8 @@ public class ViewRestaurantDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 restPref.edit().remove(sData[0]).commit();
+                Intent intent = new Intent(ViewRestaurantDetails.this, Nav.class);
+                startActivity(intent);
             }
         });
 

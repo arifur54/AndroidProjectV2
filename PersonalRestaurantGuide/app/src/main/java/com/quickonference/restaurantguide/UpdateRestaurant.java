@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.Toast;
 
 import com.quickonference.restaurantguide.conference.Restaurant;
 
@@ -23,6 +24,9 @@ public class UpdateRestaurant extends AppCompatActivity {
     SharedPreferences.Editor updatePref;
     String rest_Name, rest_Address, rest_Tags, rest_details, rest_Ratings;
     Activity currActivity = this;
+    SharedPreferences sharedpref;
+    SharedPreferences.Editor editor;
+    Restaurant rest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,34 +43,48 @@ public class UpdateRestaurant extends AppCompatActivity {
 
 
         Intent getIntent = getIntent();
-        final String res = getIntent.getStringExtra("res");
-        final String uData[] = res.split("\n");
+//        final String res = getIntent.getStringExtra("res");
+//        final String uData[] = res.split("\n");
+        String json = getIntent.getStringExtra("json");
+        rest = Restaurant.getMyRestaurantFromJson(json, this);
+        Log.d("BRUH", rest.toString());
 
-        res_Name.setText(uData[0]);
-        res_Address.setText(uData[1]);
-        res_Tags.setText(uData[2]);
-        res_details.setText(uData[3]);
-        res_rating.setRating(Float.valueOf(uData[4]));
+
+//
+//        for(int i =0; i< uData.length;i++){
+//            Log.d(uData[i], "kkk");
+//        }
+//
+        res_Name.setText(rest.getName());
+        res_Address.setText(rest.getAddress());
+        res_Tags.setText(rest.getTag());
+        res_details.setText(rest.getDetails());
+        res_rating.setRating(Float.valueOf(rest.getRating()));
 
         //Updating the Data
-        updatePref = PreferenceManager.getDefaultSharedPreferences(this).edit();
+        sharedpref = this.getSharedPreferences("restaurants", Context.MODE_PRIVATE);
+        editor = sharedpref.edit();
         res_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                editor.remove(rest.getName()).apply();
                 rest_Name = res_Name.getText().toString();
                 rest_Address = res_Address.getText().toString();
                 rest_Tags = res_Tags.getText().toString();
                 rest_details = res_details.getText().toString();
                 rest_Ratings = Float.toString(res_rating.getRating());
-//                Restaurant restaurant = new Restaurant(rest_Name, rest_Address, rest_Tags, rest_details, rest_Ratings);
-////                restaurant.storeRestaurant(currActivity,);
-////                updatePref = PreferenceManager.getDefaultSharedPreferences(t).edit();
-//                updatePref.putString("name",rest_Name);
-//                updatePref.putString("address",rest_Address);
-//                updatePref.putString("tag",rest_Tags);
-//                updatePref.putString("details", rest_details);
-//                updatePref.putString("rating", rest_Ratings);
-//                updatePref.apply();
+
+                if(rest_Name.isEmpty() || rest_Address.isEmpty() || rest_Tags.isEmpty() || rest_details.isEmpty() || rest_Ratings.isEmpty()){
+                    Toast.makeText(UpdateRestaurant.this, "Fields Cannot Be Empty", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                  Restaurant restaurant = new Restaurant(rest_Name, rest_Address, rest_Tags, rest_details, rest_Ratings, rest.getLat(),rest.getLng());
+                  Restaurant.storeRestaurant(restaurant,currActivity);
+                  Intent intent = new Intent(UpdateRestaurant.this, Nav.class);
+                    startActivity(intent);
+               }
+
+               // Toast.makeText(UpdateRestaurant.this, "Fields Cannot Be Empty", Toast.LENGTH_SHORT).show();
             }
         });
 
