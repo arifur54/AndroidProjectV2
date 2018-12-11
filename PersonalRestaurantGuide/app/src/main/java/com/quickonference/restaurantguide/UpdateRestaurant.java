@@ -40,7 +40,7 @@ public class UpdateRestaurant extends AppCompatActivity {
 
         Intent getIntent = getIntent();
         final String res = getIntent.getStringExtra("res");
-        final String uData[] = res.split(",");
+        final String uData[] = res.split("\n");
 
         res_Name.setText(uData[0]);
         res_Address.setText(uData[1]);
@@ -66,7 +66,7 @@ public class UpdateRestaurant extends AppCompatActivity {
                 updatePref.putString("tag",rest_Tags);
                 updatePref.putString("details", rest_details);
                 updatePref.putString("rating", rest_Ratings);
-                updatePref.commit();
+                updatePref.apply();
             }
         });
 

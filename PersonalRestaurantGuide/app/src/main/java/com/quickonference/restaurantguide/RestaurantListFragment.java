@@ -87,7 +87,7 @@ public class RestaurantListFragment extends Fragment {
                     Toast.makeText(getActivity(), "Clicked Items: " + position + customeList.getItem(position).toString(), Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(getActivity(), ViewRestaurantDetails.class);
-                    String sData = resName.get(position) + "," + address.get(position) + "," + _tag.get(position) + "," + desc.get(position) + "," + rating.get(position);
+                    String sData = resName.get(position) + "\n" + address.get(position) + "\n" + _tag.get(position) + "\n" + desc.get(position) + "\n" + rating.get(position);
                     intent.putExtra("id", sData);
                     startActivity(intent);
                 }
