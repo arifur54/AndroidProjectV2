@@ -6,24 +6,40 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.places.GeoDataClient;
+import com.google.android.gms.location.places.Places;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.quickonference.restaurantguide.conference.Restaurant;
+import com.quickonference.restaurantguide.helpers.PlaceAutocompleteAdapter;
 
 
-public class CreateRestaurantFragment extends Fragment {
+public class CreateRestaurantFragment extends Fragment implements GoogleApiClient.OnConnectionFailedListener {
+
+    private AutoCompleteTextView mSearch;
+    private PlaceAutocompleteAdapter placeAutocompleteAdapter;
+    GeoDataClient mGeoDataClient;
+    private static final LatLngBounds LAT_LNG_BOUNDS = new LatLngBounds(
+            new LatLng(-40,-168), new LatLng(49,-74)
+    );
+
+
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_create_restaurant, container, false);
         getActivity().setTitle("Add a restaurant");
-//        private AutoCompleteTextView searchLocation;
-//        private PlaceAutocompleteAdapter placeAutocompleteAdapter;
-//        private GoogleApiClient mGoogleApiClient;
-//        protected GeoDataClient mGeoDataClient;
-
+         mGeoDataClient = Places.getGeoDataClient(this.getActivity(), null);
+        mSearch = (AutoCompleteTextView) view.findViewById(R.id.edit_rest_address);
+        placeAutocompleteAdapter = new PlaceAutocompleteAdapter(this.getActivity(), mGeoDataClient, LAT_LNG_BOUNDS, null);
+        mSearch.setAdapter(placeAutocompleteAdapter);
 
 
         Button button =  view.findViewById(R.id.create_rest_btn);
@@ -50,5 +66,10 @@ public class CreateRestaurantFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
     }
 }
