@@ -43,7 +43,6 @@ public class CustomeListView extends ArrayAdapter<String> {
         }else {
             hv = (CustomeListView.HoldView) r.getTag();
         }
-        Log.d("kkk", "Hello");
         hv.txtView_restName.setText(restName.get(position));
         hv.txtView_Address.setText(address.get(position));
         hv.txtView_tags.setText(tags.get(position));
