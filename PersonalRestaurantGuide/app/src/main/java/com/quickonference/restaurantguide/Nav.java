@@ -38,19 +38,6 @@ public class Nav extends AppCompatActivity implements NavigationView.OnNavigatio
         Log.d("firstName" ,firName);
         Log.d("lastName" ,lasName);
 
-        if(firName.equals(DEFAULT) || lasName.equals(DEFAULT)){
-            txtfName.setText(DEFAULT);
-            txtlName.setText(DEFAULT);
-        }else{
-
-//            txtfName.setText(firName);
-//            txtlName.setText(lasName);
-            //fName.setText(lasName);
-        }
-//
-
-
-
         drawer = findViewById(R.id.nav_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
