@@ -21,6 +21,7 @@ public class MapsAndNav extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private Double lat, lng;
+    private String restName;
     private FusedLocationProviderClient mfusedLocationProviderClient;
 
     @Override
@@ -28,6 +29,7 @@ public class MapsAndNav extends FragmentActivity implements OnMapReadyCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps_and_nav);
         Intent getIntent = getIntent();
+        restName = getIntent.getStringExtra("r_name");
         lat = getIntent.getDoubleExtra("lat", 0.0);
         lng = getIntent.getDoubleExtra("lng", 0.0);
 
@@ -52,7 +54,7 @@ public class MapsAndNav extends FragmentActivity implements OnMapReadyCallback {
         mMap = googleMap;
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(lat,lng);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Your Resaurent"));
+        mMap.addMarker(new MarkerOptions().position(sydney).title(restName));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         mMap.setMinZoomPreference(13);
     }

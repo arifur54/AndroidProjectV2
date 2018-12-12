@@ -8,10 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.quickonference.restaurantguide.conference.Restaurant;
+
 public class SendEmail extends AppCompatActivity {
 
     Button btnSend;
     EditText txtTo, txtSub, txtMessage;
+    Restaurant rest;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +26,11 @@ public class SendEmail extends AppCompatActivity {
 
          btnSend = findViewById(R.id.btnSendEmail);
 
+         Intent getIntent = getIntent();
+         String json = getIntent.getStringExtra("json");
+         rest = Restaurant.getMyRestaurantFromJson(json, this);
+         txtMessage.setText("Restaurant Name: " + rest.getName() + "\n" + "Restaurant Address: " + rest.getAddress() + "\n" +
+                 "Tags: " +rest.getTag() + "\n" + "Details: " + rest.getDetails()+ "\n" + "Rating: " + rest.getRating());
          btnSend.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {

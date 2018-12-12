@@ -13,7 +13,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class Nav extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
@@ -28,28 +27,6 @@ public class Nav extends AppCompatActivity implements NavigationView.OnNavigatio
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        txtfName = findViewById(R.id.txtView_fName);
-        txtlName = findViewById(R.id.txtView_lName);
-        uName = new StringBuilder();
-        SharedPreferences shrprefs = getSharedPreferences("Names", Context.MODE_PRIVATE);
-        String firName = shrprefs.getString("firstName",DEFAULT);
-        String lasName = shrprefs.getString("lastName",DEFAULT);
-
-        Log.d("firstName" ,firName);
-        Log.d("lastName" ,lasName);
-
-        if(firName.equals(DEFAULT) || lasName.equals(DEFAULT)){
-            txtfName.setText(DEFAULT);
-            txtlName.setText(DEFAULT);
-        }else{
-
-//            txtfName.setText(firName);
-//            txtlName.setText(lasName);
-            //fName.setText(lasName);
-        }
-//
-
-
 
         drawer = findViewById(R.id.nav_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -61,14 +38,14 @@ public class Nav extends AppCompatActivity implements NavigationView.OnNavigatio
         if(savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,
                     new RestaurantListFragment()).commit();
-            navigationView.setCheckedItem(R.id.nav_general_schedule);
+            navigationView.setCheckedItem(R.id.nav_home);
         }
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
-            case R.id.nav_general_schedule:
+            case R.id.nav_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,
                         new RestaurantListFragment()).commit();
                 break;
@@ -78,10 +55,7 @@ public class Nav extends AppCompatActivity implements NavigationView.OnNavigatio
                 break;
             case R.id.nav_my_schedule:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,
-                        new my_schedule()).commit();
-                break;
-            case R.id.nav_twitter:
-                Toast.makeText(this, "Twitter", Toast.LENGTH_LONG).show();
+                        new about()).commit();
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);

@@ -66,6 +66,7 @@ public class ViewRestaurantDetails extends AppCompatActivity {
                 String json = restPref.getString(sData[0], "");
                 Restaurant obj = gson.fromJson(json, Restaurant.class);
                 Log.d("JSON", json);
+                intent.putExtra("r_name", obj.getName());
                 intent.putExtra("lat", obj.getLat());
                 intent.putExtra("lng", obj.getLng());
                 startActivity(intent);
@@ -97,7 +98,11 @@ public class ViewRestaurantDetails extends AppCompatActivity {
         btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Gson gson = new Gson();
+                String json = restPref.getString(sData[0], "");
                 Intent intent = new Intent(ViewRestaurantDetails.this, SendEmail.class);
+                // String uData = sData[0] + "\n" + sData[1]+ "\n" + sData[2] +"\n"+ sData[3] + "\n" + sData[4] + "\n" + sData[5] + "\n" + sData[6];
+                intent.putExtra("json", json);
                 startActivity(intent);
             }
         });

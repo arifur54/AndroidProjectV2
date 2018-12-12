@@ -28,12 +28,4 @@ public class MainActivity extends AppCompatActivity {
         }, SP_TIME_OUT);
     }
 
-//    public void toLogIn(View view)
-//    {
-//        Intent intent = new Intent(this, Login.class);
-//        startActivity(intent);
-//    }
-
-
-
 }

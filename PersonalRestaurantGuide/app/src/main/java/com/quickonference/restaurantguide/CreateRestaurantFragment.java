@@ -50,7 +50,12 @@ public class CreateRestaurantFragment extends Fragment implements GoogleApiClien
     );
     private GoogleApiClient mGoogleApiClient;
 
-
+    @Override
+    public void onPause() {
+        super.onPause();
+        mGoogleApiClient.stopAutoManage(getActivity());
+        mGoogleApiClient.disconnect();
+    }
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_create_restaurant, container, false);
         getActivity().setTitle("Add a restaurant");

@@ -13,20 +13,8 @@
             android:icon="@drawable/ic_control_point_black_24dp"
             android:title="Add Restaurant" />
         <item
-            android:id="@+id/nav_general_schedule"
-            android:icon="@drawable/ic_access_time_black_24dp"
-            android:title="General Schedule" />
-        <item
             android:id="@+id/nav_my_schedule"
             android:icon="@drawable/ic_list_black_24dp"
             android:title="About" />
     </group>
-
-    <item android:title="Social" >
-        <menu>
-            <item android:id="@+id/nav_twitter"
-                android:title="Twitter"
-                android:icon="@drawable/ic_icons8_twitter"/>
-        </menu>
-    </item>
 </menu>

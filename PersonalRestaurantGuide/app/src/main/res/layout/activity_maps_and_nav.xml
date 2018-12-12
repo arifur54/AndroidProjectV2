@@ -13,16 +13,4 @@ tools:layout_editor_absoluteY="0dp">
         android:layout_height="match_parent"
         tools:context="com.quickonference.restaurantguide.MapsAndNav" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="43dp"
-        android:layout_marginBottom="70dp"
-        android:text="Navigate"
-        android:textColor="#fff"
-        android:background="@drawable/rounded_button_secondary"/>
-
 </RelativeLayout>
