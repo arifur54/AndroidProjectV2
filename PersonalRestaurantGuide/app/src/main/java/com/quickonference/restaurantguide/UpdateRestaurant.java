@@ -84,7 +84,6 @@ public class UpdateRestaurant extends AppCompatActivity {
                     startActivity(intent);
                }
 
-               // Toast.makeText(UpdateRestaurant.this, "Fields Cannot Be Empty", Toast.LENGTH_SHORT).show();
             }
         });
 

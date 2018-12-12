@@ -21,7 +21,7 @@ public class ViewRestaurantDetails extends AppCompatActivity {
     Activity currActivity = this;
     TextView setTitle;
 
-    Button btnEdit, btnDelete, btnLoc;
+    Button btnEdit, btnDelete, btnLoc, btnShare;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +55,7 @@ public class ViewRestaurantDetails extends AppCompatActivity {
         btnLoc = findViewById(R.id.btnMaps);
         btnEdit = findViewById(R.id.btn_update);
         btnDelete = findViewById(R.id.btn_Delete);
+        btnShare = findViewById(R.id.btn_Share);
 
         // Send to maps Activity
         btnLoc.setOnClickListener(new View.OnClickListener() {
@@ -93,6 +94,13 @@ public class ViewRestaurantDetails extends AppCompatActivity {
             }
         });
 
+        btnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewRestaurantDetails.this, SendEmail.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

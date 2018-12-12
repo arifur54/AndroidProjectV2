@@ -45,7 +45,9 @@
             android:name=".MapsAndNav"
             android:label="@string/title_activity_maps_and_nav" />
         <activity android:name=".ViewRestaurantDetails" />
-        <activity android:name=".UpdateRestaurant"></activity>
+        <activity android:name=".UpdateRestaurant" />
+        <activity android:name="com.quickonference.quickonference.SendEmail" />
+        <activity android:name=".SendEmail"></activity>
     </application>
 
 </manifest>
